@@ -114,26 +114,36 @@ body {
     justify-content: center;
 }
 
-.header-form {
+#header-form {
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.header-form-input {
+#header-form-input {
     width: 15rem;
     height: 2rem;
     padding-left: 0.5rem;
     border: 1px solid black;
-    border-right: none;
+    margin-right: 2px;
 
     font-size: 1.2rem;
 }
 
-.header-form-btn {
+#header-form-input:focus {
+    outline: 2px solid coral;
+ }
+
+#header-form-btn {
     width: 3rem;
     height: 2rem;
     border: 1px solid black;
+
+    background-color: lavender;
 }
+
+#header-form-btn:focus {
+    outline: 2px solid coral;
+ }
 /* FORM STYLING END */
 /* ***** HEADER END ***** */
