@@ -70,7 +70,12 @@ body {
 }
 
 /* ******** STYLING ******** */
-/* ***** HEADER ***** */
+/* ***** HEADER START ***** */
+.header-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+/* LOGO STYLING START */
 .logo-container {
     position: relative;
 }
@@ -97,3 +102,38 @@ body {
     line-height: 1.5rem;
     color: #000;
 }
+/* LOGO STYLING END */
+
+/* FORM STYLING START */
+.form-container {
+    /* POSITIONING IN THE MIDDLE COLUMN */
+    grid-column-start: 2;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.header-form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.header-form-input {
+    width: 15rem;
+    height: 2rem;
+    padding-left: 0.5rem;
+    border: 1px solid black;
+    border-right: none;
+
+    font-size: 1.2rem;
+}
+
+.header-form-btn {
+    width: 3rem;
+    height: 2rem;
+    border: 1px solid black;
+}
+/* FORM STYLING END */
+/* ***** HEADER END ***** */
