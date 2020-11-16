@@ -102,6 +102,10 @@ body {
     line-height: 1.5rem;
     color: #000;
 }
+
+.logo-title:hover {
+    cursor: default;
+}
 /* LOGO STYLING END */
 
 /* FORM STYLING START */
@@ -140,6 +144,10 @@ body {
     border: 1px solid black;
 
     background-color: lavender;
+}
+
+#header-form-btn:hover {
+    cursor: pointer;
 }
 
 #header-form-btn:focus {
