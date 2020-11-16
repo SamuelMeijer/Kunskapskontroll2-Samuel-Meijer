@@ -1,3 +1,5 @@
+// TODO: MAKE REPOSITORY PUBLIC BEFORE HANDING IN THE ASSIGNMENT, ONLY SET TO PRIVATE TO PROTECT THE API-KEY!
+
 /*
 **** INSTRUCTIONS ****
 1. All info ska presenteras i metric units
@@ -46,4 +48,24 @@ async function handleResponse (promise) {
     // TODO: Add try...catch
     const promiseJs = await promise.json();
     console.log(promiseJs);
+
+    // Updating textcontent.
+    mainTitle.textContent = promiseJs.name; // TODO: Update with userinput instead of promiseJs.name? PromiseJS.name will always be in english.
+    mainDescription.textContent = promiseJs.weather[0].description;
+
+    const table = document.createElement('table');
+    const thead = document.createElement('thead');
+    const tbody = document.createElement('tbody');
+
+    thead.insertAdjacentHTML('afterbegin', `<th colspan="2"><img src="http://openweathermap.org/img/wn/${promiseJs.weather[0].icon}@2x.png"></th>`);
+    table.appendChild(thead);
+
+    tbody.insertAdjacentHTML('afterbegin', `<td>Temperature</td> <td>${promiseJs.main.temp} C&deg;`);
+    tbody.insertAdjacentHTML('beforeend', `<td>Feels like</td> <td>${promiseJs.main.feels_like} C&deg;`);
+    tbody.insertAdjacentHTML('beforeend', `<td>Wind</td> <td>${promiseJs.wind.speed} m/s`);
+    tbody.insertAdjacentHTML('beforeend', `<td>Wind direction</td> <td>${promiseJs.wind.deg}`);
+    tbody.insertAdjacentHTML('beforeend', `<td>Humidity</td> <td>${promiseJs.main.humidity} %`);
+    table.appendChild(tbody);
+    
+    mainContentContainer.appendChild(table);
 };
