@@ -155,3 +155,33 @@ body {
  }
 /* FORM STYLING END */
 /* ***** HEADER END ***** */
+
+/* ***** MAIN START ***** */
+.main-container {
+    padding-top: 2rem;
+
+    background-color: rosybrown;
+}
+
+.main-content-container {
+    height: 100%;
+    width: 80%;
+    margin: 0 auto;
+
+    background-color: red;
+}
+
+.main-title {
+    height: 3rem;
+    background-color: rebeccapurple;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.main-description {
+    padding-top: 1rem;
+    text-align: center;
+}
+/* ***** MAIN END ***** */
