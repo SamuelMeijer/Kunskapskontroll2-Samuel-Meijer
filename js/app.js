@@ -51,21 +51,61 @@ async function handleResponse (promise) {
 
     // Updating textcontent.
     mainTitle.textContent = promiseJs.name; // TODO: Update with userinput instead of promiseJs.name? PromiseJS.name will always be in english.
-    mainDescription.textContent = promiseJs.weather[0].description;
+    mainDescription.textContent = `I ${promiseJs.name} är det just nu ${promiseJs.weather[0].description}`;
 
-    const table = document.createElement('table');
-    const thead = document.createElement('thead');
-    const tbody = document.createElement('tbody');
+    // Evaluates if mainContentContainer only has two childre, if it does the function 'addTable' will be called to create the elements needed to display the weather information recieved from the API.
+   if (mainContentContainer.children.length === 2) {
+       addTable();
+   }
 
-    thead.insertAdjacentHTML('afterbegin', `<th colspan="2"><img src="http://openweathermap.org/img/wn/${promiseJs.weather[0].icon}@2x.png"></th>`);
-    table.appendChild(thead);
+   /* *** Updating <table>-element to display weather information *** */
+   // Updating the <img>-element that is a child of <thead> to display a weather icon.
+   document.querySelector('table thead th img').setAttribute('src', `http://openweathermap.org/img/wn/${promiseJs.weather[0].icon}@2x.png`);
 
-    tbody.insertAdjacentHTML('afterbegin', `<td>Temperature</td> <td>${promiseJs.main.temp} C&deg;`);
-    tbody.insertAdjacentHTML('beforeend', `<td>Feels like</td> <td>${promiseJs.main.feels_like} C&deg;`);
-    tbody.insertAdjacentHTML('beforeend', `<td>Wind</td> <td>${promiseJs.wind.speed} m/s`);
-    tbody.insertAdjacentHTML('beforeend', `<td>Wind direction</td> <td>${promiseJs.wind.deg}`);
-    tbody.insertAdjacentHTML('beforeend', `<td>Humidity</td> <td>${promiseJs.main.humidity} %`);
-    table.appendChild(tbody);
-    
-    mainContentContainer.appendChild(table);
+   // Nodelist of every <tr>-element inside <table>.
+   const trNodeList = document.querySelectorAll('table tbody tr');
+
+   // Looping through the nodelist and updating the textcontent of the second child, the <td>-element that displays the weather information.
+   for (let i = 0; i < trNodeList.length; i++) {
+       switch (i) {
+            case 0:
+                trNodeList[i].children[1].textContent = `${promiseJs.main.temp} C°`;
+                break
+            case 1:
+                trNodeList[i].children[1].textContent = `${promiseJs.main.feels_like} C°`;
+                break
+            case 2:
+                trNodeList[i].children[1].textContent = `${promiseJs.wind.speed} m/s`;
+                break
+            case 3:
+                // TODO: Fix wind direction depeneding on wind.deg
+                trNodeList[i].children[1].textContent = `${promiseJs.wind.deg}`;
+                break
+            case 4:
+                trNodeList[i].children[1].textContent = `${promiseJs.main.humidity} %`;
+                break
+       }
+   }
 };
+
+// addTable creates a <table>-element with children and appends it as a child to mainContentContainer.
+function addTable () {
+     const table = document.createElement('table');
+     const thead = document.createElement('thead');
+     const tbody = document.createElement('tbody');
+ 
+     // Appending a child element that will contain the weather icon.
+     thead.insertAdjacentHTML('afterbegin', `<th colspan="2"><img></th>`);
+     table.appendChild(thead);
+ 
+     // Appending several child elements that will be used to display the weather information.
+     tbody.insertAdjacentHTML('afterbegin', `<td>Temperature</td> <td></td>`);
+     tbody.insertAdjacentHTML('beforeend', `<td>Feels like</td> <td></td>`);
+     tbody.insertAdjacentHTML('beforeend', `<td>Wind</td> <td></td>`);
+     tbody.insertAdjacentHTML('beforeend', `<td>Wind direction</td> <td></td>`);
+     tbody.insertAdjacentHTML('beforeend', `<td>Humidity</td> <td></td>`);
+     table.appendChild(tbody);
+     
+     // Appending the <table> element as a child to mainContentContainer
+     mainContentContainer.appendChild(table);
+}
