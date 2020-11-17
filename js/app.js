@@ -78,8 +78,8 @@ async function handleResponse (promise) {
                 trNodeList[i].children[1].textContent = `${promiseJs.wind.speed} m/s`;
                 break
             case 3:
-                // TODO: Fix wind direction depeneding on wind.deg
-                trNodeList[i].children[1].textContent = `${promiseJs.wind.deg}`;
+                // Rotating the arrow-icon to the corresponding degree in promiseJs.wind.deg
+                trNodeList[i].children[1].children[0].style.transform = `rotate(${promiseJs.wind.deg}deg)`;
                 break
             case 4:
                 trNodeList[i].children[1].textContent = `${promiseJs.main.humidity} %`;
@@ -90,6 +90,8 @@ async function handleResponse (promise) {
    // Changing the color of the text displaying temperature information based on the temperature value.
    temperatureColor(promiseJs.main.temp, trNodeList[0].children[1]);
    temperatureColor(promiseJs.main.feels_like, trNodeList[1].children[1]);
+
+
 };
 
 // addTable creates a <table>-element with children and appends it as a child to mainContentContainer.
@@ -106,7 +108,7 @@ function addTable () {
      tbody.insertAdjacentHTML('afterbegin', `<td>Temperature</td> <td></td>`);
      tbody.insertAdjacentHTML('beforeend', `<td>Feels like</td> <td></td>`);
      tbody.insertAdjacentHTML('beforeend', `<td>Wind</td> <td></td>`);
-     tbody.insertAdjacentHTML('beforeend', `<td>Wind direction</td> <td></td>`);
+     tbody.insertAdjacentHTML('beforeend', `<td>Wind direction</td> <td><i class="fas fa-long-arrow-alt-up"></i></td>`);
      tbody.insertAdjacentHTML('beforeend', `<td>Humidity</td> <td></td>`);
      table.appendChild(tbody);
      
