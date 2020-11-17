@@ -60,7 +60,10 @@ async function handleResponse (promise) {
 
    /* *** Updating <table>-element to display weather information *** */
    // Updating the <img>-element that is a child of <thead> to display a weather icon.
-   document.querySelector('table thead th img').setAttribute('src', `http://openweathermap.org/img/wn/${promiseJs.weather[0].icon}@2x.png`);
+   let weatherImg = document.querySelector('table thead th img');
+   weatherImg.setAttribute('src', `http://openweathermap.org/img/wn/${promiseJs.weather[0].icon}@2x.png`);
+   weatherImg.style.backgroundColor = '#fff';
+   weatherImg.style.border = '1px solid #000';
 
    // Nodelist of every <tr>-element inside <table>.
    const trNodeList = document.querySelectorAll('table tbody tr');
@@ -90,8 +93,6 @@ async function handleResponse (promise) {
    // Changing the color of the text displaying temperature information based on the temperature value.
    temperatureColor(promiseJs.main.temp, trNodeList[0].children[1]);
    temperatureColor(promiseJs.main.feels_like, trNodeList[1].children[1]);
-
-
 };
 
 // addTable creates a <table>-element with children and appends it as a child to mainContentContainer.
@@ -122,11 +123,11 @@ function temperatureColor (temperature, element) {
         element.style.color = 'darkblue';
     } else if (temperature <= 10) {
         element.style.color = 'blue';
-    } else if (temperature >= 20) {
-        element.style.color = 'green';
     } else if (temperature >= 30) {
-        element.style.color = 'darkgreen';
+        element.style.color = 'red';
+    } else if (temperature >= 20) {
+        element.style.color = 'orange';
     } else {
-        element.style.color = 'yellow';
+        element.style.color = 'green';
     };
 };

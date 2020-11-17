@@ -161,7 +161,7 @@ body {
     padding-top: 2rem;
 
     /* TODO: REMOVE BACKGROUND-COLOR */
-    background-color: rosybrown;
+    /* background-color: rosybrown; */
 }
 
 .main-content-container {
@@ -170,7 +170,7 @@ body {
     margin: 0 auto;
 
      /* TODO: REMOVE BACKGROUND-COLOR */
-    background-color: red;
+    /* background-color: red; */
 
     display: flex;
     flex-direction: column;
@@ -182,7 +182,7 @@ body {
     width: 100%;
     
      /* TODO: REMOVE BACKGROUND-COLOR */
-    background-color: rebeccapurple;
+    /* background-color: rebeccapurple; */
 
     display: flex;
     align-items: center;
@@ -190,7 +190,7 @@ body {
 }
 
 .main-description {
-    padding-top: 1rem;
+    padding: 1rem 0;
     text-align: center;
 }
 /* ***** MAIN END ***** */
