@@ -86,6 +86,10 @@ async function handleResponse (promise) {
                 break
        }
    }
+
+   // Changing the color of the text displaying temperature information based on the temperature value.
+   temperatureColor(promiseJs.main.temp, trNodeList[0].children[1]);
+   temperatureColor(promiseJs.main.feels_like, trNodeList[1].children[1]);
 };
 
 // addTable creates a <table>-element with children and appends it as a child to mainContentContainer.
@@ -109,3 +113,18 @@ function addTable () {
      // Appending the <table> element as a child to mainContentContainer
      mainContentContainer.appendChild(table);
 }
+
+// Changing the color of the text displaying temperature information based on the temperature value.
+function temperatureColor (temperature, element) {
+    if (temperature <= 0) {
+        element.style.color = 'darkblue';
+    } else if (temperature <= 10) {
+        element.style.color = 'blue';
+    } else if (temperature >= 20) {
+        element.style.color = 'green';
+    } else if (temperature >= 30) {
+        element.style.color = 'darkgreen';
+    } else {
+        element.style.color = 'yellow';
+    };
+};
