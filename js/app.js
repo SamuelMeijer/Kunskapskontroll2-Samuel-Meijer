@@ -34,9 +34,7 @@ form.addEventListener('submit', function (event) {
     let userInput = formInput.value;
 
     // TODO: Add alternatives for units and language? Currently units will be displayed as metric and language as swedish.
-    fetch(`${baseUrl}?q=${userInput}&units=metric&lang=sv&appid=${apiKey}`).then(handleResponse).catch(function (error) {
-        console.error('FEEEEL', error.message);
-    });
+    fetch(`${baseUrl}?q=${userInput}&units=metric&lang=sv&appid=${apiKey}`).then(handleResponse).catch(errorHandler);
 
     // Preventing normal submit-behaviour.
     event.preventDefault();
@@ -49,9 +47,20 @@ async function handleResponse (promise) {
     const promiseJs = await promise.json();
     console.log(promiseJs);
 
-    // Updating textcontent.
-    mainTitle.textContent = promiseJs.name; // TODO: Update with userinput instead of promiseJs.name? PromiseJS.name will always be in english.
-    mainDescription.textContent = `I ${promiseJs.name} är det just nu ${promiseJs.weather[0].description}`;
+    /* *** Updating textcontent. *** */
+    let userInput = formInput.value;
+    // Calling function 'formatString' to make sure the data will be presented in a proper format.
+    userInput = formatString(userInput);
+    
+    // Reseting the input-element (searchfield).
+    formInput.value = '';
+    // TODO: REMOVE? Using .blur() to remove the focus from the input-element (searchfield) in order to remove search suggestions for old user-input from showing, .focus() is used to once again focus on the input-element (searchfield) after the old user-input has been removed.
+    formInput.blur();
+    formInput.focus();
+
+    // Updating textcontent with userInput instead of directly getting the name from API-response because the API-response is sometimes in english and sometimes in swedish.
+    mainTitle.textContent = userInput;
+    mainDescription.textContent = `I ${userInput} är det just nu ${promiseJs.weather[0].description}`;
 
     // Evaluates if mainContentContainer only has two childre, if it does the function 'addTable' will be called to create the elements needed to display the weather information recieved from the API.
    if (mainContentContainer.children.length === 2) {
@@ -131,4 +140,26 @@ function temperatureColor (temperature, element) {
     } else {
         element.style.color = 'green';
     };
+};
+
+// Handling errors related to the response from the API or the content of the response.
+function errorHandler (error) {
+    // TODO: ADD FUNCTIONALITY!
+    console.error('FEEEEL', error.message);
+}
+
+// Converts the first character of every new word in a string to uppercase, every other character in the string will be lowercase. 
+// ex) 'riO de jAnEiro' -> 'Rio De Janeiro'.
+function formatString (string) {
+    let newString = '';
+    
+    for (let i = 0; i < string.length; i++) {
+        if (i === 0 || string.charAt(i - 1) === ' ') {
+            newString += string.charAt(i).toUpperCase();
+        } else {
+            newString += string.charAt(i).toLowerCase();
+        };
+    }
+
+    return newString
 };
