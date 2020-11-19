@@ -62,8 +62,6 @@ async function handleResponse (promise) {
    // Updating the <img>-element that is a child of <thead> to display a weather icon.
    let weatherImg = document.querySelector('table thead th img');
    weatherImg.setAttribute('src', `http://openweathermap.org/img/wn/${promiseJs.weather[0].icon}@2x.png`);
-   weatherImg.style.backgroundColor = '#fff';
-   weatherImg.style.border = '1px solid #000';
 
    // Nodelist of every <tr>-element inside <table>.
    const trNodeList = document.querySelectorAll('table tbody tr');
@@ -113,6 +111,9 @@ function addTable () {
      tbody.insertAdjacentHTML('beforeend', `<td>Humidity</td> <td></td>`);
      table.appendChild(tbody);
      
+     // Adding css-class 'main-table'.
+     table.classList.add('main-table');
+
      // Appending the <table> element as a child to mainContentContainer
      mainContentContainer.appendChild(table);
 }

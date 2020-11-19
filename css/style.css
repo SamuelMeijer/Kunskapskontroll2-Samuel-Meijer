@@ -193,4 +193,28 @@ body {
     padding: 1rem 0;
     text-align: center;
 }
+
+/* TABLE STYLING START */
+.main-table thead tr th{
+    background-color: #fff; 
+    border: 1px solid #000;
+}
+
+.main-table tbody tr:nth-child(even) {
+    font-size: 0.75rem;
+    font-style: italic;
+}
+
+.main-table tbody tr:nth-child(4) td:nth-child(2) {
+    padding-left: 0.25rem;
+}
+
+.main-table tbody tr td {
+    width: 6.25rem;
+}
+
+.main-table tbody tr td:nth-child(2) {
+    text-align: right;
+}
+/* TABLE STYLING END */
 /* ***** MAIN END ***** */
