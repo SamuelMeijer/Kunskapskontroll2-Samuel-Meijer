@@ -2,7 +2,7 @@
 _Av Samuel Meijer_
 
 ### **Välkommen till The No.1 Weather App**
-The No.1 Weather App visar det aktuella väderet för alla städer!
+The No.1 Weather App visar aktuell väderinformation för alla städer!
 
 För att visa väderinformation om en stad är allt du behöver göra att skriva in stadens namn i sökrutan högst upp på sidan och trycka på knappen 'Sök'.
 
