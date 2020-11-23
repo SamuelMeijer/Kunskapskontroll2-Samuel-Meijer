@@ -23,6 +23,7 @@
 /* ******** GENERAL SETTINGS ******** */
 body {
     height: 100vh;
+    min-height: 21rem;
     width: 100vw;
 
     font-family: Helvetica, Arial, sans-serif;
@@ -51,6 +52,7 @@ body {
 
 #main {
     height: calc(100vh - var(--header-height) - var(--footer-height));
+    min-height: 15rem;
     width: 100%;
 
     background-color: whitesmoke;

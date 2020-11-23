@@ -31,13 +31,14 @@ const apiKey = 'dfd0919a1a33da253891307cacb8266c';
 
 // ***** EVENT LISTENERS *****
 form.addEventListener('submit', function (event) {
+    // Preventing normal submit-behaviour.
+    event.preventDefault();
+    
+    // Selecting the users input.
     let userInput = formInput.value;
 
     // TODO: Add alternatives for units and language? Currently units will be displayed as metric and language as swedish.
     fetch(`${baseUrl}?q=${userInput}&units=metric&lang=sv&appid=${apiKey}`).then(handleResponse).catch(errorHandler);
-
-    // Preventing normal submit-behaviour.
-    event.preventDefault();
 });
 
 // ***** FUNCTIONS *****
@@ -113,11 +114,11 @@ function addTable () {
      table.appendChild(thead);
  
      // Appending several child elements that will be used to display the weather information.
-     tbody.insertAdjacentHTML('afterbegin', `<td>Temperature</td> <td></td>`);
-     tbody.insertAdjacentHTML('beforeend', `<td>Feels like</td> <td></td>`);
-     tbody.insertAdjacentHTML('beforeend', `<td>Wind</td> <td></td>`);
-     tbody.insertAdjacentHTML('beforeend', `<td>Wind direction</td> <td><i class="fas fa-long-arrow-alt-up"></i></td>`);
-     tbody.insertAdjacentHTML('beforeend', `<td>Humidity</td> <td></td>`);
+     tbody.insertAdjacentHTML('afterbegin', `<td>Temperatur</td> <td></td>`);
+     tbody.insertAdjacentHTML('beforeend', `<td>Känns som</td> <td></td>`);
+     tbody.insertAdjacentHTML('beforeend', `<td>Vindhastighet</td> <td></td>`);
+     tbody.insertAdjacentHTML('beforeend', `<td>Vindriktning</td> <td><i class="fas fa-long-arrow-alt-up"></i></td>`);
+     tbody.insertAdjacentHTML('beforeend', `<td>Luftfuktighet</td> <td></td>`);
      table.appendChild(tbody);
      
      // Adding css-class 'main-table'.
