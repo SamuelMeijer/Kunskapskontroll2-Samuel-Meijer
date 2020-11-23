@@ -92,7 +92,7 @@ async function handleResponse (promise) {
             throw new SyntaxError(`Incomplete data: No feels like temperature`);
         } else if (!promiseJs.wind.speed) {
             throw new SyntaxError(`Incomplete data: No wind speed`);
-        } else if (!promiseJs.wind.deg) {
+        } else if (!promiseJs.wind.deg && typeof promiseJs.wind.deg !== 'number') {
             throw new SyntaxError(`Incomplete data: No wind direction`);
         } else if (!promiseJs.main.humidity) {
             throw new SyntaxError(`Incomplete data: No humidity`);
