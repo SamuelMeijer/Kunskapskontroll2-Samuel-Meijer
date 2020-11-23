@@ -1,5 +1,3 @@
-// TODO: MAKE REPOSITORY PUBLIC BEFORE HANDING IN THE ASSIGNMENT, ONLY SET TO PRIVATE TO PROTECT THE API-KEY!
-
 /*
 **** INSTRUCTIONS ****
 1. All info ska presenteras i metric units
@@ -25,7 +23,6 @@ const mainTitle = document.querySelector('.main-title');
 const mainDescription = document.querySelector('.main-description');
 
 // ***** API-URL *****
-// TODO: Uncomment, dont want to waste API-calls during development of other parts since there is a limit of 1000/day.
 const baseUrl = 'http://api.openweathermap.org/data/2.5/weather';
 const apiKey = 'dfd0919a1a33da253891307cacb8266c';
 
@@ -37,7 +34,6 @@ form.addEventListener('submit', function (event) {
     // Selecting the users input.
     let userInput = formInput.value;
 
-    // TODO: Add alternatives for units and language? Currently units will be displayed as metric and language as swedish.
     fetch(`${baseUrl}?q=${userInput}&units=metric&lang=sv&appid=${apiKey}`).then(handleResponse).catch(errorHandler);
 });
 
@@ -54,10 +50,7 @@ async function handleResponse (promise) {
     // Using .focus() to once again focus on the input-element (searchfield) after the old user-input has been removed.
     formInput.focus();
 
-    // TODO: REMOVE!
-    console.log('PROMISE:', promise);
-
-    // Evaluating if the response from the API was ok or if an error occurred.
+    // Evaluating if an error occurred in the response from the API.
     if (!promise.ok) {
         // Hiding the <table>-element that displays weather information if one exists.
         let table = document.querySelector('.main-table');
@@ -107,16 +100,13 @@ async function handleResponse (promise) {
     } catch (error) {
         console.error('Json Error: ' + error);
     }
-
-    //TODO: REMOVE!
-    console.log(promiseJs)
     
     /* *** Updating textcontent. *** */
     // Updating textcontent with userInput instead of directly getting the name from API-response because the API-response is sometimes in english and sometimes in swedish.
     mainTitle.textContent = userInput;
     mainDescription.textContent = `I ${userInput} är det just nu ${promiseJs.weather[0].description}`;
 
-    // Evaluates if mainContentContainer only has two childre, if it does the function 'addTable' will be called to create the elements needed to display the weather information recieved from the API.
+    // Evaluates if mainContentContainer only has two children, if it does the function 'addTable' will be called to create the elements needed to display the weather information recieved from the API.
    if (mainContentContainer.children.length === 2) {
        addTable();
    }
