@@ -23,7 +23,7 @@
 /* ******** GENERAL SETTINGS ******** */
 body {
     height: 100vh;
-    min-height: 21rem;
+    min-height: 29rem;
     width: 100vw;
 
     font-family: Helvetica, Arial, sans-serif;
@@ -52,7 +52,7 @@ body {
 
 #main {
     height: calc(100vh - var(--header-height) - var(--footer-height));
-    min-height: 15rem;
+    min-height: 23rem;
     width: 100%;
 
     background-color: whitesmoke;
@@ -161,18 +161,12 @@ body {
 /* ***** MAIN START ***** */
 .main-container {
     padding-top: 2rem;
-
-    /* TODO: REMOVE BACKGROUND-COLOR */
-    /* background-color: rosybrown; */
 }
 
 .main-content-container {
     height: 100%;
     width: 80%;
     margin: 0 auto;
-
-     /* TODO: REMOVE BACKGROUND-COLOR */
-    /* background-color: red; */
 
     display: flex;
     flex-direction: column;
@@ -182,9 +176,6 @@ body {
 .main-title {
     height: 3rem;
     width: 100%;
-    
-     /* TODO: REMOVE BACKGROUND-COLOR */
-    /* background-color: rebeccapurple; */
 
     display: flex;
     align-items: center;
